@@ -32,8 +32,7 @@ export function ProductGrid({ products, onProductClick }: ProductGridProps) {
               />
               {product.aiGenerated && (
                 <div className="absolute top-3 left-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white px-3 py-1 rounded-full text-xs font-semibold flex items-center">
-                  <Sparkles className="h-3 w-3 mr-1" />
-                  AI Generated
+                  
                 </div>
               )}
               {product.videoReel && (

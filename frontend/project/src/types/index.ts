@@ -6,17 +6,14 @@ export interface User {
 }
 
 export interface Product {
-  id: string;
-  artistId: string;
-  name: string;              // maps from "title" in form
+  id: string;             // maps to MongoDB _id
+  userId: string;         // maps to backend user_id
+  name: string;           // maps to title
   description: string;
   price: number;
+  images: string;       // maps from image_url
+  audio?: string | null;
+  category?: string;
+  tags?: string[];
   createdAt: string;
-  images: string[];          // product images
-  audio: string | null;      // optional audio file
-  category: string;          // category of the product
-  tags: string[];            // tags for the product
-  aiGenerated: boolean;      // AI generated or not
-  likes: number;             // number of likes
-  views: number;             // number of views
 }

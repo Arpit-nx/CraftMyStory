@@ -131,7 +131,6 @@
 //     </div>
 //   );
 // }
-
 import React, { useState } from 'react';
 
 interface AuthModalProps {
@@ -169,11 +168,23 @@ export function AuthModal({ onClose, onLogin, onSignup, mode }: AuthModalProps) 
   };
 
   return (
-    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-      <div className="bg-white rounded-xl shadow-lg p-6 w-96">
-        <h2 className="text-xl font-bold mb-4">{isLogin ? 'Login' : 'Sign Up'}</h2>
+    <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50 backdrop-blur-sm">
+      <div className="bg-gradient-to-br from-violet-700 via-pink-300 to-blue-700 rounded-2xl shadow-2xl p-8 w-96 relative border border-white/20">
+        
+        {/* Close Button */}
+        <button
+          type="button"
+          onClick={onClose}
+          className="absolute top-4 right-4 text-white text-2xl hover:text-red-400"
+        >
+          ✕
+        </button>
 
-        <form onSubmit={handleSubmit} className="space-y-3">
+        <h2 className="text-2xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-purple-300 to-blue-300 text-center drop-shadow-lg">
+          {isLogin ? 'Login' : 'Sign Up'}
+        </h2>
+
+        <form onSubmit={handleSubmit} className="space-y-4">
           {!isLogin && (
             <>
               <input
@@ -181,7 +192,7 @@ export function AuthModal({ onClose, onLogin, onSignup, mode }: AuthModalProps) 
                 placeholder="Full Name"
                 value={form.name}
                 onChange={e => setForm({ ...form, name: e.target.value })}
-                className="w-full border rounded-md p-2"
+                className="w-full rounded-xl p-3 bg-white/20 border border-white/30 placeholder-white/70 text-white focus:ring-2 focus:ring-pink-400 outline-none"
                 required
               />
               <input
@@ -189,7 +200,7 @@ export function AuthModal({ onClose, onLogin, onSignup, mode }: AuthModalProps) 
                 placeholder="Craft"
                 value={form.craft}
                 onChange={e => setForm({ ...form, craft: e.target.value })}
-                className="w-full border rounded-md p-2"
+                className="w-full rounded-xl p-3 bg-white/20 border border-white/30 placeholder-white/70 text-white focus:ring-2 focus:ring-pink-400 outline-none"
                 required
               />
               <input
@@ -197,14 +208,15 @@ export function AuthModal({ onClose, onLogin, onSignup, mode }: AuthModalProps) 
                 placeholder="Location"
                 value={form.location}
                 onChange={e => setForm({ ...form, location: e.target.value })}
-                className="w-full border rounded-md p-2"
+                className="w-full rounded-xl p-3 bg-white/20 border border-white/30 placeholder-white/70 text-white focus:ring-2 focus:ring-pink-400 outline-none"
                 required
               />
-              <label className="flex items-center space-x-2">
+              <label className="flex items-center space-x-2 text-white">
                 <input
                   type="checkbox"
                   checked={form.isArtist}
                   onChange={e => setForm({ ...form, isArtist: e.target.checked })}
+                  className="accent-pink-400"
                 />
                 <span>I'm an Artist</span>
               </label>
@@ -216,7 +228,7 @@ export function AuthModal({ onClose, onLogin, onSignup, mode }: AuthModalProps) 
             placeholder="Email"
             value={form.email}
             onChange={e => setForm({ ...form, email: e.target.value })}
-            className="w-full border rounded-md p-2"
+            className="w-full rounded-xl p-3 bg-white/20 border border-white/30 placeholder-white/70 text-white focus:ring-2 focus:ring-pink-400 outline-none"
             required
           />
           <input
@@ -224,13 +236,13 @@ export function AuthModal({ onClose, onLogin, onSignup, mode }: AuthModalProps) 
             placeholder="Password"
             value={form.password}
             onChange={e => setForm({ ...form, password: e.target.value })}
-            className="w-full border rounded-md p-2"
+            className="w-full rounded-xl p-3 bg-white/20 border border-white/30 placeholder-white/70 text-white focus:ring-2 focus:ring-pink-400 outline-none"
             required
           />
 
           <button
             type="submit"
-            className="w-full bg-purple-600 text-white py-2 rounded-md hover:bg-purple-700"
+            className="w-full py-3 rounded-xl font-bold text-white bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 hover:scale-105 transform transition-all shadow-lg"
           >
             {isLogin ? 'Login' : 'Sign Up'}
           </button>
@@ -238,7 +250,7 @@ export function AuthModal({ onClose, onLogin, onSignup, mode }: AuthModalProps) 
 
         <button
           onClick={() => setIsLogin(!isLogin)}
-          className="mt-2 text-sm text-purple-600 hover:text-purple-700"
+          className="mt-4 w-full text-sm text-white/80 hover:text-white text-center underline"
         >
           {isLogin ? "Don't have an account? Sign Up" : "Already have an account? Login"}
         </button>

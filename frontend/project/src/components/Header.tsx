@@ -99,23 +99,28 @@ interface HeaderProps {
 
 export function Header({ currentUser, onLogin, onSignup, onLogout, onNavigate, currentView }: HeaderProps) {
   return (
-    <header className="bg-white shadow-sm border-b border-gray-200">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <header className="relative bg-gradient-to-br from-purple-900 via-purple-800 to-indigo-800 shadow-sm border-b border-gray-700">
+      {/* Black overlay like in Hero */}
+      <div className="absolute inset-0 bg-black opacity-50"></div>
+
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div className="flex items-center">
-            <Palette className="h-8 w-8 text-purple-600" />
-            <span className="ml-2 text-xl font-bold text-gray-900">ArtisanHub</span>
+            <Palette className="h-8 w-8 text-purple-400" />
+            <span className="ml-2 text-xl font-bold bg-gradient-to-r from-orange-400 to-pink-400 bg-clip-text text-transparent">
+              ArtisanHub
+            </span>
 
             {/* Navigation Links */}
             {currentUser && (
               <nav className="ml-8 flex space-x-4">
                 <button
                   onClick={() => onNavigate('home')}
-                  className={`flex items-center px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                  className={`flex items-center px-3 py-2 rounded-md text-sm font-medium border-2 transition-colors ${
                     currentView === 'home'
-                      ? 'bg-purple-100 text-purple-700'
-                      : 'text-gray-500 hover:text-gray-700'
+                      ? 'bg-gradient-to-r from-orange-500 to-pink-500 text-white'
+                      : 'text-white border-white hover:bg-white/10'
                   }`}
                 >
                   <Home className="h-4 w-4 mr-2" />
@@ -125,10 +130,10 @@ export function Header({ currentUser, onLogin, onSignup, onLogout, onNavigate, c
                 {currentUser.isArtist && (
                   <button
                     onClick={() => onNavigate('dashboard')}
-                    className={`flex items-center px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                    className={`flex items-center px-3 py-2 rounded-md text-sm font-medium border-2 transition-colors ${
                       currentView === 'dashboard'
-                        ? 'bg-purple-100 text-purple-700'
-                        : 'text-gray-500 hover:text-gray-700'
+                        ? 'bg-gradient-to-r from-orange-500 to-pink-500 text-white'
+                        : 'text-white border-white hover:bg-white/10'
                     }`}
                   >
                     <Grid3X3 className="h-4 w-4 mr-2" />
@@ -145,27 +150,29 @@ export function Header({ currentUser, onLogin, onSignup, onLogout, onNavigate, c
               <>
                 <button
                   onClick={onSignup}
-                  className="bg-purple-100 text-purple-700 px-4 py-2 rounded-md text-sm font-medium hover:bg-purple-200 transition-colors"
+                  className="bg-white text-gray-900 px-4 py-2 rounded-md text-sm font-medium border-2 border-transparent hover:bg-gradient-to-r from-orange-500 to-pink-500 hover:text-white transition-all"
                 >
                   Sign Up
                 </button>
                 <button
                   onClick={onLogin}
-                  className="bg-purple-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-purple-700 transition-colors"
+                  className="bg-gradient-to-r from-orange-500 to-pink-500 text-white px-4 py-2 rounded-md text-sm font-medium hover:from-orange-600 hover:to-pink-600 transition-all"
                 >
                   Login
                 </button>
               </>
             ) : (
               <div className="flex items-center space-x-3">
-                <User className="h-6 w-6 text-gray-400" />
-                <span className="text-sm text-gray-700">{currentUser.name}</span>
+                <User className="h-6 w-6 text-gray-200" />
+                <span className="text-sm text-white">{currentUser.name}</span>
                 {currentUser.isArtist && (
-                  <span className="ml-2 px-2 py-1 bg-purple-100 text-purple-700 text-xs rounded-full">Artist</span>
+                  <span className="ml-2 px-2 py-1 bg-gradient-to-r from-orange-500 to-pink-500 text-white text-xs rounded-full">
+                    Artist
+                  </span>
                 )}
                 <button
                   onClick={onLogout}
-                  className="flex items-center px-3 py-2 text-sm text-gray-500 hover:text-gray-700 transition-colors"
+                  className="flex items-center px-3 py-2 text-sm text-white border-2 border-white rounded-md hover:bg-white/10 transition-colors"
                 >
                   <LogOut className="h-4 w-4 mr-1" />
                   Logout
