@@ -11,8 +11,11 @@ export function ProductGrid({ products, onProductClick }: ProductGridProps) {
   return (
     <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
       <div className="text-center mb-12">
-        <h2 className="text-3xl font-bold text-gray-900 mb-4">Featured Artwork</h2>
-        <p className="text-gray-600 max-w-2xl mx-auto">
+        <h2 className="text-3xl font-bold bg-gradient-to-r from-pink-500 to-yellow-400 bg-clip-text text-transparent mb-4">
+  Featured Artwork
+</h2>
+
+        <p className="text-gray-600 max-w-2xl font-bold mx-auto">
           Discover amazing artwork from our community of talented artists, including AI-generated content
         </p>
       </div>

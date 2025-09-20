@@ -11,9 +11,9 @@ export interface Product {
   name: string;           // maps to title
   description: string;
   price: number;
-  images: string;       // maps from image_url
+  image_url: string;       // maps from image_url
   audio?: string | null;
-  category?: string;
-  tags?: string[];
+  category: string;
+  tags: string[];
   createdAt: string;
 }

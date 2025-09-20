@@ -119,7 +119,7 @@ export function Header({ currentUser, onLogin, onSignup, onLogout, onNavigate, c
                   onClick={() => onNavigate('home')}
                   className={`flex items-center px-3 py-2 rounded-md text-sm font-medium border-2 transition-colors ${
                     currentView === 'home'
-                      ? 'bg-gradient-to-r from-orange-500 to-pink-500 text-white'
+                      ? 'bg-gradient-to-r from-orange-500 to-pink-500 text-pink'
                       : 'text-white border-white hover:bg-white/10'
                   }`}
                 >
@@ -164,19 +164,22 @@ export function Header({ currentUser, onLogin, onSignup, onLogout, onNavigate, c
             ) : (
               <div className="flex items-center space-x-3">
                 <User className="h-6 w-6 text-gray-200" />
-                <span className="text-sm text-white">{currentUser.name}</span>
+                <span className="text-sm font-bold uppercase bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-orange-500">{currentUser.name}</span>
                 {currentUser.isArtist && (
                   <span className="ml-2 px-2 py-1 bg-gradient-to-r from-orange-500 to-pink-500 text-white text-xs rounded-full">
                     Artist
                   </span>
                 )}
                 <button
-                  onClick={onLogout}
-                  className="flex items-center px-3 py-2 text-sm text-white border-2 border-white rounded-md hover:bg-white/10 transition-colors"
-                >
-                  <LogOut className="h-4 w-4 mr-1" />
-                  Logout
-                </button>
+                    onClick={onLogout}
+                    className="flex items-center px-3 py-2 text-sm text-white border-2 border-pink-500 rounded-md 
+                              bg-gradient-to-r from-pink-500 via-orange-400 to-blue-500 
+                              hover:from-pink-400 hover:via-orange-300 hover:to-blue-400 
+                              transition-all duration-300 shadow-md"
+                  >
+                    <LogOut className="h-4 w-4 mr-1" />
+                    Logout
+                  </button>
               </div>
             )}
           </div>
